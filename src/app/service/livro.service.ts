@@ -22,6 +22,4 @@ export class LivroService {
       tap((retornoAPi) => console.log('Fluxo após o map', retornoAPi))
     );
   }
-
-
 }
