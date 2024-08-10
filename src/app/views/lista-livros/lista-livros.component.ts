@@ -1,7 +1,8 @@
 import { Subscription } from 'rxjs';
 import { LivroService } from './../../service/livro.service';
 import { Component, OnDestroy } from '@angular/core';
-import { Livro } from 'src/app/models/interfaces';
+import { Item, Livro } from 'src/app/models/interfaces';
+import { LivroVolumeInfo } from 'src/app/models/LivroVolumeInfo';
 
 @Component({
   selector: 'app-lista-livros',
@@ -17,22 +18,10 @@ export class ListaLivrosComponent implements OnDestroy {
 
   constructor(private service: LivroService) { }
 
-  listaItemLivros(items): Livro[] {
-    const livros: Livro[] = [];
-
-    items.forEach(item => {
-      livros.push(this.livro = {
-        title: item.volumeInfo?.title,
-        authors: item.volumeInfo?.authors,
-        publisher: item.volumeInfo?.publisher,
-        publishedDate: item.volumeInfo?.publishedDate,
-        description: item.volumeInfo?.description,
-        previewLink: item.volumeInfo?.previewLink,
-        thumbnail: item.volumeInfo?.imageLinks?.thumbnail
-      })
-    });
-
-    return livros;
+  listaItemLivros(items: Item[]): LivroVolumeInfo[] {
+    return items.map(item => {
+      return new LivroVolumeInfo(item);
+    })
   }
 
   buscarLivros() {
