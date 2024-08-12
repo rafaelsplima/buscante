@@ -15,7 +15,7 @@ export class LivroService {
 
   buscar(ValorDigitado: string): Observable<LivrosResultado> {
     const params = new HttpParams().append('q', ValorDigitado);
-    return this.http.get<LivrosResultado>(this.API,{params});
 
+    return this.http.get<LivrosResultado>(this.API,{params});
   }
 }
