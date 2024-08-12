@@ -12,5 +12,4 @@ export class AutoriaPipe implements PipeTransform {
 
     return '';
   }
-
 }
